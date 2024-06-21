@@ -60,10 +60,10 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Horizontal",
+                    "name": "Slide",
                     "type": "PassThrough",
-                    "id": "da0634f9-d89e-42a3-9fc8-820514dc0714",
-                    "expectedControlType": "Axis",
+                    "id": "383893d8-d22e-480c-8ded-ab40814296a2",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -270,23 +270,12 @@
                 },
                 {
                     "name": "",
-                    "id": "5f79c9a9-1a7c-49b4-83e9-0a4ab388652c",
-                    "path": "<Keyboard>/a",
+                    "id": "69f905fa-93fa-4681-a43d-78313573ccc8",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Horizontal",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3bf0caa1-40fa-4b82-a4b2-cb0b9c7fa537",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "Horizontal",
+                    "action": "Slide",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -25,7 +25,7 @@ public class Gun : MonoBehaviour
     // Graphics
     public GameObject muzzleFlash, bulletHoleGraphic;
 
-    //public CamShake camShake;
+    public CameraShake camShake;
     public float camShakeMagnitude, camShakeDuration;
     public TextMeshProUGUI ammoText;
 
@@ -72,7 +72,7 @@ public class Gun : MonoBehaviour
         Instantiate(bullet, attackPoint.position, Quaternion.LookRotation(direction, Vector3.up));
 
         //Camera Shake
-        //camShake.Shake(camShakeDuration, camShakeMagnitude);
+        StartCoroutine(camShake.Shake(camShakeDuration, camShakeMagnitude));
 
         //Graphics
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);

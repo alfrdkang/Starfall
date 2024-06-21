@@ -14,6 +14,7 @@ namespace StarterAssets
 		public bool sprint;
 		public bool shoot;
 		public bool reload;
+		public bool slide;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -53,6 +54,10 @@ namespace StarterAssets
         {
             ReloadInput(value.isPressed);
         }
+        public void OnSlide(InputValue value)
+        {
+            SlideInput(value.isPressed);
+        }
 #endif
 
 
@@ -84,6 +89,11 @@ namespace StarterAssets
         public void ReloadInput(bool newReloadState)
         {
             reload = newReloadState;
+        }
+
+        public void SlideInput(bool newSlideState)
+        {
+            slide = newSlideState;
         }
 
         private void OnApplicationFocus(bool hasFocus)
