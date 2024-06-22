@@ -8,7 +8,6 @@ public class Sliding : MonoBehaviour
     [Header("References")]
     public Transform playerObj;
     //private Rigidbody rb;
-    private FirstPersonController firstPersonController;
     private StarterAssetsInputs _input;
     private CharacterController controller;
 
@@ -19,20 +18,16 @@ public class Sliding : MonoBehaviour
 
     public float slideYScale;
     private float startYScale;
-    private float startMoveSpeed;
 
     public bool sliding;
     Vector3 inputDirection;
 
     private void Awake()
     {
-        //rb = GetComponent<Rigidbody>();
-        firstPersonController = GetComponent<FirstPersonController>();
         _input = GetComponent<StarterAssetsInputs>();
         controller = GetComponent<CharacterController>();
 
         startYScale = playerObj.localScale.y;
-        startMoveSpeed = firstPersonController.MoveSpeed;
     }
 
     private void FixedUpdate()
@@ -50,10 +45,10 @@ public class Sliding : MonoBehaviour
             StartSlide();
         }
 
-        if (Input.GetKeyUp(KeyCode.C) && sliding)
-        {
-            StopSlide();
-        }
+        //if (Input.GetKeyUp(KeyCode.C) && sliding)
+        //{
+        //    StopSlide();
+        //}
     }
 
     private void StartSlide()
