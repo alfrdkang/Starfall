@@ -8,14 +8,15 @@ TagManager:
   - Enemy
   - ActiveWeapon
   - Secondary
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - IsGround
   - Water
   - UI
-  - 
+  - IsPlayer
   - 
   - 
   - 

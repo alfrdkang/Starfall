@@ -5415,6 +5415,27 @@ MonoBehaviour:
   glitch3: {fileID: 1151442548}
   glitch4: {fileID: 1859778778}
   gameManager: {fileID: 1123222608}
+--- !u!95 &287149699
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287149689}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b76e75005a6476d43bae7eab3d404bec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &338720823
 GameObject:
   m_ObjectHideFlags: 0
@@ -84881,6 +84902,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7933942718296978796, guid: 67c6dd070c5427e4985f45637ee8a7e3,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7933942718296978796, guid: 67c6dd070c5427e4985f45637ee8a7e3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7933942718296978796, guid: 67c6dd070c5427e4985f45637ee8a7e3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7933942718296978796, guid: 67c6dd070c5427e4985f45637ee8a7e3,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -84902,17 +84938,17 @@ PrefabInstance:
     - target: {fileID: 7933942718296978796, guid: 67c6dd070c5427e4985f45637ee8a7e3,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7933942718296978796, guid: 67c6dd070c5427e4985f45637ee8a7e3,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7933942718296978796, guid: 67c6dd070c5427e4985f45637ee8a7e3,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7933942718296978796, guid: 67c6dd070c5427e4985f45637ee8a7e3,
         type: 3}
@@ -84962,6 +84998,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 287149690}
+    - targetCorrespondingSourceObject: {fileID: 7933942718296978799, guid: 67c6dd070c5427e4985f45637ee8a7e3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 287149699}
   m_SourcePrefab: {fileID: 100100000, guid: 67c6dd070c5427e4985f45637ee8a7e3, type: 3}
 --- !u!1 &1522713403
 GameObject:

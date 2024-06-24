@@ -12,6 +12,13 @@ public class StartCutscene : MonoBehaviour
 
     public GameManager gameManager;
 
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     public void Play()
     {
         StartCoroutine(PlayCutscene());
@@ -24,12 +31,13 @@ public class StartCutscene : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         glitch1.SetActive(true);
         yield return new WaitForSeconds(2.0f);
+        animator.Play("Shake");
         glitch2.SetActive(true);
         yield return new WaitForSeconds(1.0f);
         glitch3.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         glitch4.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         gameManager.MoveUpScene();
     }
 }

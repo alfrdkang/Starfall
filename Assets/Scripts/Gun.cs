@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using StarterAssets;
 
+[RequireComponent(typeof(AudioSource))]
 public class Gun : MonoBehaviour
 {
     // Gun Statistics
@@ -30,10 +31,16 @@ public class Gun : MonoBehaviour
     public TextMeshProUGUI ammoText;
     public GunAnimations animations;
 
+    // Audio
+    public AudioClip shootAudio;
+    public AudioClip reloadAudio;
+    private AudioSource audioSource;
+
     private void Awake()
     {
         bulletsLeft = magazineSize;
         readyToShoot = true;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -73,6 +80,9 @@ public class Gun : MonoBehaviour
         animations.WeaponRecoil();
         Instantiate(bullet, attackPoint.position, Quaternion.LookRotation(direction, Vector3.up));
 
+        //Audio
+        audioSource.PlayOneShot(shootAudio);
+
         //Camera Shake
         StartCoroutine(camShake.Shake(camShakeDuration, camShakeMagnitude));
 
@@ -97,6 +107,9 @@ public class Gun : MonoBehaviour
     private void Reload()
     {
         reloading = true;
+
+        //Audio
+        audioSource.PlayOneShot(reloadAudio);
 
         animations.WeaponReload();
 
