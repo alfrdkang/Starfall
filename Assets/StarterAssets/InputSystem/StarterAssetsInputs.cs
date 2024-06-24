@@ -15,6 +15,8 @@ namespace StarterAssets
 		public bool shoot;
 		public bool reload;
 		public bool slide;
+		public bool primary;
+		public bool secondary;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -58,6 +60,14 @@ namespace StarterAssets
         {
             SlideInput(value.isPressed);
         }
+        public void OnPrimary(InputValue value)
+        {
+            PrimaryInput(value.isPressed);
+        }
+        public void OnSecondary(InputValue value)
+        {
+            SecondaryInput(value.isPressed);
+        }
 #endif
 
 
@@ -94,6 +104,16 @@ namespace StarterAssets
         public void SlideInput(bool newSlideState)
         {
             slide = newSlideState;
+        }
+
+        public void PrimaryInput(bool newPrimaryState)
+        {
+            primary = newPrimaryState;
+        }
+
+        public void SecondaryInput(bool newSecondaryState)
+        {
+            secondary = newSecondaryState;
         }
 
         private void OnApplicationFocus(bool hasFocus)

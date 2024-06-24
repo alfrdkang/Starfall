@@ -11,7 +11,7 @@ public class Gun : MonoBehaviour
     public bool allowBtnHold;
     int bulletsLeft, bulletsShot;
 
-    bool shooting, readyToShoot, reloading;
+    public bool shooting, readyToShoot, reloading;
 
     // Refs
     public Camera Cam;
@@ -28,6 +28,7 @@ public class Gun : MonoBehaviour
     public CameraShake camShake;
     public float camShakeMagnitude, camShakeDuration;
     public TextMeshProUGUI ammoText;
+    public GunAnimations animations;
 
     private void Awake()
     {
@@ -69,6 +70,7 @@ public class Gun : MonoBehaviour
 
         Vector3 direction = Cam.transform.forward + new Vector3(x, y, 0);
 
+        animations.WeaponRecoil();
         Instantiate(bullet, attackPoint.position, Quaternion.LookRotation(direction, Vector3.up));
 
         //Camera Shake
@@ -95,6 +97,9 @@ public class Gun : MonoBehaviour
     private void Reload()
     {
         reloading = true;
+
+        animations.WeaponReload();
+
         Invoke("ReloadFinished", reloadTime);
     }
 

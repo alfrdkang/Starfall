@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CinemachineTarget
   - Enemy
+  - ActiveWeapon
+  - Secondary
   layers:
   - Default
   - TransparentFX
