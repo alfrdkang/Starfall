@@ -22,4 +22,9 @@ public class GunAnimations : MonoBehaviour
     {
         animator.Play("ReloadPlus");
     }
+
+    public void WeaponPullout()
+    {
+        animator.Play("Pullout");
+    }
 }

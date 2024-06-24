@@ -5,6 +5,8 @@ using StarterAssets;
 
 public class WeaponSwitch : MonoBehaviour
 {
+    private GunAnimations animations;
+
     public StarterAssetsInputs _input;
     public GameObject primary;
     public GameObject secondary;
@@ -14,6 +16,8 @@ public class WeaponSwitch : MonoBehaviour
 
     private void Awake()
     {
+        animations = GetComponent<GunAnimations>();
+
         primaryGun = primary.GetComponent<Gun>();
         secondaryGun = secondary.GetComponent<Gun>();
     }
@@ -25,12 +29,14 @@ public class WeaponSwitch : MonoBehaviour
         {
             primary.SetActive(true);
             secondary.SetActive(false);
+            animations.WeaponPullout();
             _input.primary = false;
         }
         if (_input.secondary && !primaryGun.reloading && !secondaryGun.reloading)
         {
             secondary.SetActive(true);
             primary.SetActive(false);
+            animations.WeaponPullout();
             _input.secondary = false;
         }
     }
