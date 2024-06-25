@@ -1,3 +1,10 @@
+/*
+ * Author: Alfred Kang Jing Rui
+ * Date Created: 22/06/2024
+ * Date Modified: 25/06/2024
+ * Description: Script Attached to Bullet Prefab
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,9 +16,13 @@ public class BulletProjectile : MonoBehaviour
 
     private Rigidbody rb;
 
+    private EnemyAI enemy;
+    public int damage;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        Destroy(gameObject, 5);
     }
 
     private void Start()
@@ -25,6 +36,10 @@ public class BulletProjectile : MonoBehaviour
         Debug.Log(other.gameObject.name);
         if (other.CompareTag("Enemy"))
         {
+            enemy = other.gameObject.GetComponent<EnemyAI>();
+            enemy.TakeDamage(damage);
+            Debug.Log(other.gameObject.name + " took " + damage + " points of damage!");
+
             Instantiate(vfxHitGreen, transform.position, Quaternion.identity);
         } else
         {

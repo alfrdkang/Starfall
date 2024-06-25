@@ -1,3 +1,10 @@
+/*
+ * Author: Alfred Kang Jing Rui
+ * Date Created: 22/06/2024
+ * Date Modified: 24/06/2024
+ * Description: Script Attached to Guns, Handles events and gun settings
+ */
+
 using UnityEngine;
 using TMPro;
 using StarterAssets;
@@ -19,6 +26,7 @@ public class Gun : MonoBehaviour
     public Transform attackPoint;
     public RaycastHit rayHit;
     public LayerMask Enemy;
+    public BulletProjectile bulletScript;
 
     // Bullet
     [SerializeField] private Transform bullet;
@@ -41,6 +49,7 @@ public class Gun : MonoBehaviour
         bulletsLeft = magazineSize;
         readyToShoot = true;
         audioSource = GetComponent<AudioSource>();
+        bulletScript.damage = damage;
     }
 
     private void Update()

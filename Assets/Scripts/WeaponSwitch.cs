@@ -1,3 +1,10 @@
+/*
+ * Author: Alfred Kang Jing Rui
+ * Date Created: 24/06/2024
+ * Date Modified: 25/06/2024
+ * Description: Active weapon management and switching
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +20,7 @@ public class WeaponSwitch : MonoBehaviour
 
     private Gun primaryGun;
     private Gun secondaryGun;
+    public BulletProjectile bullet;
 
     private void Awake()
     {
@@ -29,6 +37,8 @@ public class WeaponSwitch : MonoBehaviour
         {
             primary.SetActive(true);
             secondary.SetActive(false);
+            bullet.damage = primaryGun.damage;
+
             animations.WeaponPullout();
             _input.primary = false;
         }
@@ -36,6 +46,8 @@ public class WeaponSwitch : MonoBehaviour
         {
             secondary.SetActive(true);
             primary.SetActive(false);
+            bullet.damage = secondaryGun.damage;
+
             animations.WeaponPullout();
             _input.secondary = false;
         }

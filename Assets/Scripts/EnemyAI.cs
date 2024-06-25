@@ -1,9 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
+/*
+ * Author: Alfred Kang Jing Rui
+ * Date Created: 22/06/2024
+ * Date Modified: 25/06/2024
+ * Description: Script Attached to Enemies for NavMesh and Health
+ */
+
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -13,7 +17,12 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask IsGround, IsPlayer;
 
-    public float health;
+    public float maxHealth;
+    private float health;
+    [SerializeField] private Image healthbar;
+    [SerializeField] private GameObject healthBarCanvas;
+    private Camera cam;
+    private Animator animator;
 
     //Patrol
     private Vector3 walkPoint;
@@ -30,20 +39,39 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
+        if (TryGetComponent(out Flying flying))
+        {
+            agent.baseOffset = 1.2f;
+        }
+
+        cam = Camera.main;
+        animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        health = maxHealth;
     }
 
     private void Update()
     {
-        //Check if Player is in sight/attack range
-        playerInSight = Physics.CheckSphere(transform.position, sightRange, IsPlayer);
-        playerInAttack = Physics.CheckSphere(transform.position, attackRange, IsPlayer);
+        if (health >= 0)
+        {
+            //Check if Player is in sight/attack range
+            playerInSight = Physics.CheckSphere(transform.position, sightRange, IsPlayer);
+            playerInAttack = Physics.CheckSphere(transform.position, attackRange, IsPlayer);
 
-        //Change Enemy State 
-        if (!playerInSight && !playerInAttack) Patrol();
-        if (playerInSight && !playerInAttack) Chase();
-        if (!playerInSight && playerInAttack) Attack();
+            //Change Enemy State 
+            if (!playerInSight && !playerInAttack) Patrol();
+            if (playerInSight && !playerInAttack) Chase();
+            if (!playerInSight && playerInAttack) Attack();
+        }
+
+        //Rotate Healthbar
+        healthBarCanvas.transform.rotation = Quaternion.LookRotation(transform.position - cam.transform.position);
+    }
+
+    public void UpdateHealthBar(float health, float maxHealth)
+    {
+        healthbar.fillAmount = health / maxHealth;
     }
 
     private void Patrol()
@@ -91,6 +119,7 @@ public class EnemyAI : MonoBehaviour
 
         if (!attacked)
         {
+            animator.Play("Attack");
             //insert atk code
 
             attacked = true;
@@ -105,11 +134,16 @@ public class EnemyAI : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        animator.Play("GetHit");
         health -= damage;
+        UpdateHealthBar(health, maxHealth);
 
         if (health <= 0 )
         {
-            Invoke(nameof(DestroyEnemy), 2f);
+            agent.SetDestination(transform.position);
+            Destroy(GetComponent<SphereCollider>());
+            animator.Play("Die");
+            Invoke(nameof(DestroyEnemy), 1f);
         }
     }
 

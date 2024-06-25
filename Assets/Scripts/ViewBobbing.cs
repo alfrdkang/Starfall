@@ -1,3 +1,10 @@
+/*
+ * Author: Alfred Kang Jing Rui
+ * Date Created: 23/06/2024
+ * Date Modified: 23/06/2024
+ * Description: Scripts that handles player view bobbing
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
