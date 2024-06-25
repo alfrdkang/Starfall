@@ -6318,7 +6318,7 @@ GameObject:
   - component: {fileID: 95706203690179082}
   - component: {fileID: 95706203690179083}
   m_Layer: 0
-  m_Name: TurtleShellPBR
+  m_Name: WalkingSam
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6643,7 +6643,7 @@ GameObject:
   - component: {fileID: 95457533544917804}
   - component: {fileID: 95457533544917805}
   m_Layer: 0
-  m_Name: SlimePBR
+  m_Name: WalkingTimmy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7431,8 +7431,9 @@ GameObject:
   - component: {fileID: 1537303941486298064}
   - component: {fileID: 1537303941486298066}
   - component: {fileID: 1537303941486298067}
+  - component: {fileID: 1537303941486298068}
   m_Layer: 0
-  m_Name: Swarm08PA
+  m_Name: FlyingJohn
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9128,8 +9129,9 @@ GameObject:
   - component: {fileID: 5442755175312428511}
   - component: {fileID: 5442755175312428513}
   - component: {fileID: 5442755175312428512}
+  - component: {fileID: 5442755175312428514}
   m_Layer: 0
-  m_Name: Swarm09
+  m_Name: FlyingBill
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9206,6 +9208,18 @@ MonoBehaviour:
   attackRange: 12
   playerInSight: 0
   playerInAttack: 0
+--- !u!114 &1537303941486298068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16829958202613391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e7aee547c154ce4a724a6f6073e090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1557486219991458395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11423,6 +11437,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5442755175312428514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467277096005207476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e7aee547c154ce4a724a6f6073e090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5463599077041807054
 Transform:
   m_ObjectHideFlags: 0
