@@ -9,6 +9,8 @@ TagManager:
   - ActiveWeapon
   - Secondary
   - FxTemporaire
+  - spwner
+  - Collectible
   layers:
   - Default
   - TransparentFX
