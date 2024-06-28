@@ -7,6 +7,9 @@ namespace StarterAssets
 {
 	public class StarterAssetsInputs : MonoBehaviour
 	{
+
+		[SerializeField] PauseMenu pauseMenu;
+
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
@@ -17,6 +20,8 @@ namespace StarterAssets
 		public bool slide;
 		public bool primary;
 		public bool secondary;
+		public bool pause;
+		public bool crouch;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -68,52 +73,71 @@ namespace StarterAssets
         {
             SecondaryInput(value.isPressed);
         }
+        public void OnPause(InputValue value)
+        {
+            PauseInput(value.isPressed);
+        }
+        public void OnCrouch(InputValue value)
+        {
+            CrouchInput(value.isPressed);
+        }
+
 #endif
 
 
         public void MoveInput(Vector2 newMoveDirection)
 		{
-			move = newMoveDirection;
+			if (!pauseMenu.IsPaused) move = newMoveDirection;
 		} 
 
 		public void LookInput(Vector2 newLookDirection)
 		{
-			look = newLookDirection;
+            if (!pauseMenu.IsPaused) look = newLookDirection;
 		}
 
 		public void JumpInput(bool newJumpState)
 		{
-			jump = newJumpState;
+            if (!pauseMenu.IsPaused) jump = newJumpState;
 		}
 
 		public void SprintInput(bool newSprintState)
 		{
-			sprint = newSprintState;
+            if (!pauseMenu.IsPaused) sprint = newSprintState;
 		}
 
         public void ShootInput(bool newShootState)
         {
-            shoot = newShootState;
+            if (!pauseMenu.IsPaused) shoot = newShootState;
         }
 
         public void ReloadInput(bool newReloadState)
         {
-            reload = newReloadState;
+            if (!pauseMenu.IsPaused) reload = newReloadState;
         }
 
         public void SlideInput(bool newSlideState)
         {
-            slide = newSlideState;
+            if (!pauseMenu.IsPaused) slide = newSlideState;
         }
 
         public void PrimaryInput(bool newPrimaryState)
         {
-            primary = newPrimaryState;
+            if (!pauseMenu.IsPaused) primary = newPrimaryState;
         }
 
         public void SecondaryInput(bool newSecondaryState)
         {
-            secondary = newSecondaryState;
+            if (!pauseMenu.IsPaused) secondary = newSecondaryState;
+        }
+
+        public void PauseInput(bool newPauseState)
+        {
+            pause = newPauseState;
+        }
+
+        public void CrouchInput(bool newCrouchState)
+        {
+            if (!pauseMenu.IsPaused) crouch = newCrouchState;
         }
 
         private void OnApplicationFocus(bool hasFocus)
