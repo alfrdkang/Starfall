@@ -38,6 +38,7 @@ public class WeaponSwitch : MonoBehaviour
             primary.SetActive(true);
             secondary.SetActive(false);
             bullet.damage = primaryGun.damage;
+            primaryGun.UpdateUI();
 
             animations.WeaponPullout();
             _input.primary = false;
@@ -47,6 +48,7 @@ public class WeaponSwitch : MonoBehaviour
             secondary.SetActive(true);
             primary.SetActive(false);
             bullet.damage = secondaryGun.damage;
+            secondaryGun.UpdateUI();
 
             animations.WeaponPullout();
             _input.secondary = false;

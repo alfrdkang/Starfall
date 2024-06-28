@@ -6,6 +6,7 @@
  */
 
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using StarterAssets;
 
@@ -37,6 +38,7 @@ public class Gun : MonoBehaviour
     public CameraShake camShake;
     public float camShakeMagnitude, camShakeDuration;
     public TextMeshProUGUI ammoText;
+    public Slider ammoBar;
     public GunAnimations animations;
 
     // Audio
@@ -50,6 +52,7 @@ public class Gun : MonoBehaviour
         readyToShoot = true;
         audioSource = GetComponent<AudioSource>();
         bulletScript.damage = damage;
+        UpdateUI();
     }
 
     private void Update()
@@ -72,8 +75,6 @@ public class Gun : MonoBehaviour
         {
             Reload();
         }
-
-        ammoText.SetText(bulletsLeft.ToString() + "/" + magazineSize.ToString());
     }
 
     private void Shoot()
@@ -97,6 +98,7 @@ public class Gun : MonoBehaviour
 
         //Graphics
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
+        UpdateUI();
 
         bulletsLeft--;
         bulletsShot--;
@@ -128,6 +130,14 @@ public class Gun : MonoBehaviour
     private void ReloadFinished()
     {
         bulletsLeft = magazineSize;
+        UpdateUI();
         reloading = false;
+    }
+
+    public void UpdateUI()
+    {
+        ammoText.SetText(bulletsLeft.ToString() + "/" + magazineSize.ToString());
+        ammoBar.value = bulletsLeft;
+        ammoBar.maxValue = magazineSize;
     }
 }

@@ -755,6 +755,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxHealth: 7
+  damage: 4
   healthbar: {fileID: 8077301249814481327}
   healthBarCanvas: {fileID: 5669013208854484596}
   walkPointRange: 5

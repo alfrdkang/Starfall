@@ -19,10 +19,12 @@ public class EnemyAI : MonoBehaviour
 
     public float maxHealth;
     private float health;
+    [SerializeField] private int damage;
     [SerializeField] private Image healthbar;
     [SerializeField] private GameObject healthBarCanvas;
     private Camera cam;
     private Animator animator;
+    private GameManager gameManager;
 
     //Patrol
     private Vector3 walkPoint;
@@ -49,6 +51,8 @@ public class EnemyAI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
         health = maxHealth;
+
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void Update()
@@ -116,15 +120,6 @@ public class EnemyAI : MonoBehaviour
     {
         agent.SetDestination(transform.position);
         transform.LookAt(player);
-
-        if (!attacked)
-        {
-            animator.Play("Attack");
-            //insert atk code
-
-            attacked = true;
-            Invoke(nameof(ResetAtk), timeBetweenAttacks);
-        }
     }
 
     private void ResetAtk()
@@ -144,6 +139,21 @@ public class EnemyAI : MonoBehaviour
             Destroy(GetComponent<SphereCollider>());
             animator.Play("Die");
             Invoke(nameof(DestroyEnemy), 1f);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (!attacked)
+            {
+                animator.Play("Attack");
+                gameManager.PlayerDamage(damage);
+
+                attacked = true;
+                Invoke(nameof(ResetAtk), timeBetweenAttacks);
+            }
         }
     }
 

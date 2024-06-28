@@ -8,12 +8,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+    private int playerHealth = 75;
+    private int playerMaxHealth = 75;
+
+    private Slider playerHealthBar;
+    private TextMeshProUGUI healthText;
 
     /*public static int currentScore;
     public static TextMeshProUGUI scoreText;*/
@@ -30,6 +37,9 @@ public class GameManager : MonoBehaviour
         { 
             Destroy(gameObject);
         }
+
+        playerHealthBar = GameObject.Find("playerHealthBar").GetComponent<Slider>();
+        healthText = GameObject.Find("healthText").GetComponent<TextMeshProUGUI>();
     }
 
     public void MoveUpScene()
@@ -43,4 +53,17 @@ public class GameManager : MonoBehaviour
         currentScore += scoreToAdd;
         scoreText.text = currentScore.ToString();
     }*/
+
+    public void PlayerDamage(int damage)
+    {
+        playerHealth -= damage;
+        UpdateHealthUI();
+    }
+
+    public void UpdateHealthUI()
+    {
+        healthText.SetText(playerHealth.ToString() + "/" + playerMaxHealth.ToString());
+        playerHealthBar.value = playerHealth;
+        playerHealthBar.maxValue = playerMaxHealth;
+    }
 }
