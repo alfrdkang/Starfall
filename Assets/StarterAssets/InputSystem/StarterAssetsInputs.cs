@@ -22,6 +22,7 @@ namespace StarterAssets
 		public bool secondary;
 		public bool pause;
 		public bool crouch;
+        public bool interact;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -81,18 +82,22 @@ namespace StarterAssets
         {
             CrouchInput(value.isPressed);
         }
+        public void OnInteract(InputValue value)
+        {
+            InteractInput(value.isPressed);
+        }
 
 #endif
 
 
         public void MoveInput(Vector2 newMoveDirection)
 		{
-			if (!pauseMenu.IsPaused) move = newMoveDirection;
+            if (!pauseMenu.IsPaused) move = newMoveDirection; else move = Vector2.zero;
 		} 
 
 		public void LookInput(Vector2 newLookDirection)
 		{
-            if (!pauseMenu.IsPaused) look = newLookDirection;
+            if (!pauseMenu.IsPaused) look = newLookDirection; else look = Vector2.zero;
 		}
 
 		public void JumpInput(bool newJumpState)
@@ -138,6 +143,11 @@ namespace StarterAssets
         public void CrouchInput(bool newCrouchState)
         {
             if (!pauseMenu.IsPaused) crouch = newCrouchState;
+        }
+
+        public void InteractInput(bool newInteractState)
+        {
+            if (!pauseMenu.IsPaused) interact = newInteractState;
         }
 
         private void OnApplicationFocus(bool hasFocus)

@@ -98,11 +98,11 @@ public class Gun : MonoBehaviour
 
         //Graphics
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
-        UpdateUI();
 
         bulletsLeft--;
         bulletsShot--;
 
+        UpdateUI();
         Invoke("ResetShot", timeBetweenShooting);
 
         if (bulletsShot > 0 && bulletsLeft > 0)

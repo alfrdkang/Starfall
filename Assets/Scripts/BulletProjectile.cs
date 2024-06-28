@@ -33,12 +33,11 @@ public class BulletProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
         if (other.CompareTag("Enemy"))
         {
             enemy = other.gameObject.GetComponent<EnemyAI>();
             enemy.TakeDamage(damage);
-            Debug.Log(other.gameObject.name + " took " + damage + " points of damage!");
+            //Debug.Log(other.gameObject.name + " took " + damage + " points of damage!");
 
             Instantiate(vfxHitGreen, transform.position, Quaternion.identity);
         } else

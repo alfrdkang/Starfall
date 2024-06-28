@@ -66,7 +66,7 @@ public class EnemyAI : MonoBehaviour
             //Change Enemy State 
             if (!playerInSight && !playerInAttack) Patrol();
             if (playerInSight && !playerInAttack) Chase();
-            if (!playerInSight && playerInAttack) Attack();
+            if (playerInSight && playerInAttack) Attack();
         }
 
         //Rotate Healthbar
@@ -118,7 +118,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Attack()
     {
-        agent.SetDestination(transform.position);
+        agent.SetDestination(player.position);
         transform.LookAt(player);
     }
 
@@ -143,6 +143,21 @@ public class EnemyAI : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (!attacked)
+            {
+                animator.Play("Attack");
+                gameManager.PlayerDamage(damage);
+
+                attacked = true;
+                Invoke(nameof(ResetAtk), timeBetweenAttacks);
+            }
+        }
+    }
+
+    void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {

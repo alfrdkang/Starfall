@@ -11,6 +11,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using StarterAssets;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,13 +22,14 @@ public class GameManager : MonoBehaviour
 
     private Slider playerHealthBar;
     private TextMeshProUGUI healthText;
-
-    /*public static int currentScore;
-    public static TextMeshProUGUI scoreText;*/
+    private StarterAssetsInputs _inputs;
+    private GameObject deathMenu;
+    private GameObject HUD;
+    private GameObject bgBlur;
+    private PauseMenu pauseMenu;
 
     private void Awake()
     {
-        //scoreText = GameObject.Find("scoreText").GetComponent<TextMeshProUGUI>();
         if (instance == null)
         {
             instance = this;
@@ -40,6 +42,15 @@ public class GameManager : MonoBehaviour
 
         playerHealthBar = GameObject.Find("playerHealthBar").GetComponent<Slider>();
         healthText = GameObject.Find("healthText").GetComponent<TextMeshProUGUI>();
+        /*_inputs = GameObject.Find("PlayerCapsule").GetComponent<StarterAssetsInputs>();
+        deathMenu = GameObject.Find("Death");
+        pauseMenu = GameObject.Find("PauseMenu").GetComponent<PauseMenu>();
+        HUD = GameObject.Find("HUD");
+        bgBlur = GameObject.Find("bgBlur");
+        deathMenu.SetActive(false);
+        bgBlur.SetActive(false);*/
+
+        UpdateHealthUI();
     }
 
     public void MoveUpScene()
@@ -48,15 +59,30 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    /*public void IncreaseScore(int scoreToAdd)
-    {
-        currentScore += scoreToAdd;
-        scoreText.text = currentScore.ToString();
-    }*/
-
     public void PlayerDamage(int damage)
     {
         playerHealth -= damage;
+        UpdateHealthUI();
+
+        if (playerHealth <= 0)
+        {
+            Death();
+        }
+    }
+
+    private void Death()
+    {
+        /*Time.timeScale = 0f;
+        pauseMenu.IsPaused = true;
+        Cursor.lockState = CursorLockMode.None;
+        deathMenu.SetActive(true);
+        HUD.SetActive(false);
+        bgBlur.SetActive(true);*/
+    }
+
+    public void PlayerHeal(int health)
+    {
+        playerHealth += health;
         UpdateHealthUI();
     }
 

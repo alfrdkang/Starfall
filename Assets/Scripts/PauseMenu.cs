@@ -1,3 +1,10 @@
+/*
+ * Author: Alfred Kang Jing Rui
+ * Date Created: 29/06/2024
+ * Date Modified: 29/06/2024
+ * Description: Pause Menu Functions
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +15,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private StarterAssetsInputs _inputs;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject HUD;
-    [SerializeField] private GameObject pauseVolume;
+    [SerializeField] private GameObject bgBlur;
 
     public bool IsPaused = false;
 
@@ -32,7 +39,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         pauseMenu.SetActive(false);
         HUD.SetActive(true);
-        pauseVolume.SetActive(false);
+        bgBlur.SetActive(false);
         Time.timeScale = 1f;
         IsPaused = false;
         _inputs.pause = false;
@@ -40,11 +47,11 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         pauseMenu.SetActive(true);
         HUD.SetActive(false);
-        pauseVolume.SetActive(true);
-        Time.timeScale = 0f;
+        bgBlur.SetActive(true);
         IsPaused = true;
         _inputs.pause = false;
     }
