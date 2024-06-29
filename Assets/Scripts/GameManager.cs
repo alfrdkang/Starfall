@@ -19,7 +19,9 @@ public class GameManager : MonoBehaviour
 
     private int playerHealth = 75;
     private int playerMaxHealth = 75;
+    private bool newScene = false;
 
+    [SerializeField] private GameObject player;
     private Slider playerHealthBar;
     private TextMeshProUGUI healthText;
     private StarterAssetsInputs _inputs;
@@ -27,6 +29,17 @@ public class GameManager : MonoBehaviour
     private GameObject HUD;
     private GameObject bgBlur;
     private PauseMenu pauseMenu;
+    private Vector3[] sceneIndexStartPos = new Vector3[] { Vector3.zero, Vector3.zero, new Vector3(8.89999962f, 43.9000015f, -200.199997f) };
+
+    private void FixedUpdate()
+    {
+        if (newScene == true)
+        {
+            player.transform.position = sceneIndexStartPos[SceneManager.GetActiveScene().buildIndex];
+            player.transform.rotation = Quaternion.Euler(Vector3.zero);
+            newScene = false;
+        }
+    }
 
     private void Awake()
     {
@@ -56,6 +69,14 @@ public class GameManager : MonoBehaviour
     public void MoveUpScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void MoveToScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+        newScene = true;
+
         Cursor.lockState = CursorLockMode.Locked;
     }
 

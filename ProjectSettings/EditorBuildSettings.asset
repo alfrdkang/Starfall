@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/mainmenu.unity
     guid: 6de3d60b1c0f54a9d99fe5d24220df75
   - enabled: 1
+    path: Assets/Scenes/Spaceship.unity
+    guid: ce9b68bca60df514ea06369142818c93
+  - enabled: 1
+    path: Assets/Scenes/Cave.unity
+    guid: 82d0c8f4e589bf54d9f49d4c6e24f8a9
+  - enabled: 0
     path: Assets/Scenes/Playground.unity
     guid: 707acc8dffb72b144bb1ffbe1c965f3d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:

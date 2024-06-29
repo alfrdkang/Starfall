@@ -13,15 +13,48 @@ public class Collectible : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI interactText;
     [SerializeField] private StarterAssetsInputs _input;
+    [SerializeField] private int transitionSceneIndex = 0;
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     public void Interact()
     {
         interactText.enabled = true;
-        interactText.text = "Press [E] to Pickup " + gameObject.name;
-
-        if (_input.interact)
+        if (!gameObject.CompareTag("TransitionArea"))
         {
-            Destroy(gameObject);
+            interactText.text = "Press [E] to Pickup " + gameObject.name;
+
+            if (_input.interact)
+            {
+                Destroy(gameObject);
+            }
+        } else
+        {
+            if (gameObject.name == "ExitArea")
+            {
+                interactText.text = "Press [E] to Exit";
+
+                /*if (_input.interact)
+                {
+                    Destroy(gameObject);
+                }*/
+            } else
+            {
+                interactText.text = "Press [E] to Enter";
+
+                /*if (_input.interact)
+                {
+                    Destroy(gameObject);
+                }*/
+            }
+            if (_input.interact)
+            {
+                gameManager.MoveToScene(transitionSceneIndex);
+            }
         }
     }
 }
