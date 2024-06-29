@@ -33,17 +33,22 @@ public class BulletProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (!other.CompareTag("TriggerZone"))
         {
-            enemy = other.gameObject.GetComponent<EnemyAI>();
-            enemy.TakeDamage(damage);
-            //Debug.Log(other.gameObject.name + " took " + damage + " points of damage!");
+            if (other.CompareTag("Enemy"))
+            {
+                enemy = other.gameObject.GetComponent<EnemyAI>();
+                enemy.TakeDamage(damage);
+                Debug.Log(other.gameObject.name + " took " + damage + " points of damage!");
 
-            Instantiate(vfxHitGreen, transform.position, Quaternion.identity);
-        } else
-        {
-            Instantiate(vfxHitRed, transform.position, Quaternion.identity);
+                Instantiate(vfxHitGreen, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Debug.Log(other.gameObject.name);
+                Instantiate(vfxHitRed, transform.position, Quaternion.identity);
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

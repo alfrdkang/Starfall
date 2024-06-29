@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4857149096560461459}
   - component: {fileID: 781360454360374459}
   m_Layer: 0
-  m_Name: EnermySpawner
+  m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,13 +80,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3d02cfde8fe4e4b9d672992c4932b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPointTag: spwner
-  alwaysSpawn: 1
+  spawnerTag: spwner
+  alwaysSpawn: 0
   prefabsToSpawn:
-  - {fileID: 5218931696364551833, guid: 10d1629334d3d4c34b3c45955cc49c07, type: 3}
-  - {fileID: 6239814537644199531, guid: 43baa63ea16004350bc4da424486e0dd, type: 3}
-  - {fileID: 2858041018775585540, guid: e074694213d3a47d8a64725bf6429312, type: 3}
-  - {fileID: 7825106629368264817, guid: 4d4930ddaa0d9434b862132a4706aa71, type: 3}
+  - {fileID: 4256349194514081725, guid: 10d1629334d3d4c34b3c45955cc49c07, type: 3}
+  - {fileID: 6851386363160345579, guid: 43baa63ea16004350bc4da424486e0dd, type: 3}
+  - {fileID: 1185323310275489804, guid: e074694213d3a47d8a64725bf6429312, type: 3}
+  - {fileID: 6881694200298186604, guid: 4d4930ddaa0d9434b862132a4706aa71, type: 3}
 --- !u!1 &304076476455096296
 GameObject:
   m_ObjectHideFlags: 0

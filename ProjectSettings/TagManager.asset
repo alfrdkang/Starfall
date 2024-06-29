@@ -11,6 +11,8 @@ TagManager:
   - FxTemporaire
   - spwner
   - Collectible
+  - TriggerZone
+  - Bullet
   layers:
   - Default
   - TransparentFX

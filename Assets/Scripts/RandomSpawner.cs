@@ -29,7 +29,7 @@ public class RandomSpawner : MonoBehaviour
             }
             else
             {
-                int spawnOrNot = Random.Range(0, 2);
+                int spawnOrNot = Random.Range(0, 4);
                 if (spawnOrNot == 0)
                 {
                     GameObject pts = Instantiate(prefabsToSpawn[randomPrefab]);
