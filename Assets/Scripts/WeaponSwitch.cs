@@ -10,6 +10,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
 
+/// <summary>
+/// Controls the switching and management of active weapons.
+/// </summary>
 public class WeaponSwitch : MonoBehaviour
 {
     private GunAnimations animations;
@@ -33,7 +36,8 @@ public class WeaponSwitch : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(_input.primary && !primaryGun.reloading && !secondaryGun.reloading)  
+        // Switch to primary weapon if input is received and neither weapon is reloading
+        if (_input.primary && !primaryGun.reloading && !secondaryGun.reloading)
         {
             primary.SetActive(true);
             secondary.SetActive(false);
@@ -41,8 +45,10 @@ public class WeaponSwitch : MonoBehaviour
             primaryGun.UpdateUI();
 
             animations.WeaponPullout();
-            _input.primary = false;
+            _input.primary = false; // Reset input
         }
+
+        // Switch to secondary weapon if input is received and neither weapon is reloading
         if (_input.secondary && !primaryGun.reloading && !secondaryGun.reloading)
         {
             secondary.SetActive(true);
@@ -51,7 +57,7 @@ public class WeaponSwitch : MonoBehaviour
             secondaryGun.UpdateUI();
 
             animations.WeaponPullout();
-            _input.secondary = false;
+            _input.secondary = false; // Reset input
         }
     }
 }

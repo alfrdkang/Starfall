@@ -11,34 +11,63 @@ using UnityEngine;
 using TMPro;
 using UnityEditor;
 
+/// <summary>
+/// Handles button events and functions on the main menu.
+/// </summary>
 public class MainMenuBtn : MonoBehaviour
 {
+    /// <summary>
+    /// The text component of the button.
+    /// </summary>
     public TMP_Text text;
+
+    /// <summary>
+    /// The cutscene to play when the play button is pressed.
+    /// </summary>
     public StartCutscene cutscene;
+
+    /// <summary>
+    /// The description GameObject that appears on hover.
+    /// </summary>
     private GameObject description;
 
+    /// <summary>
+    /// Initializes the description GameObject.
+    /// </summary>
     private void Awake()
     {
         description = gameObject.transform.GetChild(1).gameObject;
     }
 
+    /// <summary>
+    /// Changes the text style to underline and shows the description on hover enter.
+    /// </summary>
     public void HoverEnter()
     {
         text.fontStyle = FontStyles.Underline;
         description.SetActive(true);
     }
 
+    /// <summary>
+    /// Reverts the text style to normal and hides the description on hover exit.
+    /// </summary>
     public void HoverExit()
     {
         text.fontStyle = FontStyles.Normal;
         description.SetActive(false);
     }
 
+    /// <summary>
+    /// Plays the cutscene when the play button is pressed.
+    /// </summary>
     public void Play()
     {
         cutscene.Play();
     }
 
+    /// <summary>
+    /// Quits the application when the quit button is pressed.
+    /// </summary>
     public void Quit()
     {
         Application.Quit();

@@ -2,7 +2,7 @@
  * Author: Alfred Kang Jing Rui
  * Date Created: 23/06/2024
  * Date Modified: 23/06/2024
- * Description: Script to handle waepon sway movement
+ * Description: Script to handle weapon sway movement
  */
 
 using System.Collections;
@@ -15,20 +15,22 @@ public class WeaponSway : MonoBehaviour
     [SerializeField] private float smooth;
     [SerializeField] private float swayMultiplier;
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called once per frame. Handles mouse input to simulate weapon sway.
+    /// </summary>
     private void Update()
     {
-        //mouse input
+        // Get mouse input
         float mouseX = Input.GetAxisRaw("Mouse X") * swayMultiplier;
         float mouseY = Input.GetAxisRaw("Mouse Y") * swayMultiplier;
 
-        //rotation calc
+        // Calculate rotations
         Quaternion rotationX = Quaternion.AngleAxis(-mouseY, Vector3.right);
         Quaternion rotationY = Quaternion.AngleAxis(mouseX, Vector3.up);
 
         Quaternion targetRotation = rotationX * rotationY;
 
-        //rotate
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, smooth*Time.deltaTime);
+        // Apply smooth rotation
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, smooth * Time.deltaTime);
     }
 }
