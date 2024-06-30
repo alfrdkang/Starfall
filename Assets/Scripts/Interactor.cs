@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using StarterAssets;
+using UnityEngine.Windows;
 
 public class Interactor : MonoBehaviour
 {
@@ -19,13 +21,17 @@ public class Interactor : MonoBehaviour
     public float InteractRange;
 
     /// <summary>
-    /// Interact UI Text when Player Raycast Hits Interactable
+    /// Interaction UI Prompt
     /// </summary>
-    public TextMeshProUGUI interactText;
+    private TextMeshProUGUI interactText;
+    private StarterAssetsInputs input;
+    private GameManager gameManager;
 
-    private void Start()
+    private void Awake()
     {
         interactText = GameObject.Find("interactText").GetComponent<TextMeshProUGUI>();
+        input = GameObject.Find("PlayerCapsule").GetComponent<StarterAssetsInputs>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         interactText.enabled = false;
     }
 
@@ -36,41 +42,11 @@ public class Interactor : MonoBehaviour
         {
             if (hitInfo.collider.gameObject.TryGetComponent(out Collectible collectObj))
             {
-                collectObj.Interact();
+                collectObj.Interact(gameManager, interactText, input);
             } else
             {
                 interactText.enabled = false;
             }
-
-            /*else if (hitInfo.collider.gameObject.TryGetComponent(out DoorScript door) && !FindObjectOfType<DialogueManager>().diagActive)
-            {
-                if (keyObtained)
-                {
-                    if (hitInfo.collider.gameObject.GetComponent<DoorScript>().doorOpened)
-                    {
-                        interactText.text = "Press [E] to Close Door";
-                        interactText.enabled = true;
-                    }
-                    else
-                    {
-                        interactText.text = "Press [E] to Open Door";
-                        interactText.enabled = true;
-                    }
-                }
-                else
-                {
-                    interactText.text = "LOCKED";
-                    interactText.enabled = true;
-                }
-                if (Input.GetKeyDown(KeyCode.E) && keyObtained == true)
-                {
-                    door.Interact();
-                }
-                else if (Input.GetKeyDown(KeyCode.E) && keyObtained == false)
-                {
-                    Debug.Log("This door is locked.");
-                }
-            }*/
         }
         else
         {

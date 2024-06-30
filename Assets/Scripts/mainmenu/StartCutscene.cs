@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartCutscene : MonoBehaviour
 {
@@ -16,8 +17,6 @@ public class StartCutscene : MonoBehaviour
     public GameObject glitch2;
     public GameObject glitch3;
     public GameObject glitch4;
-
-    public GameManager gameManager;
 
     private Animator animator;
 
@@ -45,6 +44,6 @@ public class StartCutscene : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         glitch4.SetActive(true);
         yield return new WaitForSeconds(5f);
-        gameManager.MoveUpScene();
+        SceneManager.LoadScene(1);
     }
 }

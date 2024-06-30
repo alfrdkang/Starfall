@@ -17,6 +17,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private StarterAssetsInputs _inputs;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject deathMenu;
+    [SerializeField] private GameObject winMenu;
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject bgBlur;
 
@@ -42,6 +43,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         pauseMenu.SetActive(false);
         deathMenu.SetActive(false);
+        winMenu.SetActive(false);
         HUD.SetActive(true);
         bgBlur.SetActive(false);
         Time.timeScale = 1f;
