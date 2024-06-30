@@ -8,17 +8,20 @@
 using UnityEngine;
 using TMPro;
 using StarterAssets;
+using UnityEngine.Windows;
 
 public class Collectible : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI interactText;
-    [SerializeField] private StarterAssetsInputs _input;
+    private TextMeshProUGUI interactText;
+    private StarterAssetsInputs _input;
     [SerializeField] private int transitionSceneIndex = 0;
     private GameManager gameManager;
 
     private void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        interactText = GameObject.Find("interactText").GetComponent<TextMeshProUGUI>();
+        _input = GameObject.Find("PlayerCapsule").GetComponent<StarterAssetsInputs>();
     }
 
     public void Interact()
@@ -30,6 +33,7 @@ public class Collectible : MonoBehaviour
 
             if (_input.interact)
             {
+                _input.interact = false;
                 Destroy(gameObject);
             }
         } else
@@ -37,22 +41,13 @@ public class Collectible : MonoBehaviour
             if (gameObject.name == "ExitArea")
             {
                 interactText.text = "Press [E] to Exit";
-
-                /*if (_input.interact)
-                {
-                    Destroy(gameObject);
-                }*/
             } else
             {
                 interactText.text = "Press [E] to Enter";
-
-                /*if (_input.interact)
-                {
-                    Destroy(gameObject);
-                }*/
             }
             if (_input.interact)
             {
+                _input.interact = false;
                 gameManager.MoveToScene(transitionSceneIndex);
             }
         }

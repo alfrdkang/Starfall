@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Spaceship.unity
     guid: ce9b68bca60df514ea06369142818c93
   - enabled: 1
+    path: Assets/Scenes/World.unity
+    guid: 16edc7eb12309ea468b127744f81d04d
+  - enabled: 1
     path: Assets/Scenes/Cave.unity
     guid: 82d0c8f4e589bf54d9f49d4c6e24f8a9
   - enabled: 0

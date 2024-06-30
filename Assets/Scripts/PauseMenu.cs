@@ -9,11 +9,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private StarterAssetsInputs _inputs;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject deathMenu;
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject bgBlur;
 
@@ -38,6 +41,7 @@ public class PauseMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         pauseMenu.SetActive(false);
+        deathMenu.SetActive(false);
         HUD.SetActive(true);
         bgBlur.SetActive(false);
         Time.timeScale = 1f;
@@ -54,5 +58,16 @@ public class PauseMenu : MonoBehaviour
         bgBlur.SetActive(true);
         IsPaused = true;
         _inputs.pause = false;
+    }
+
+    public void Restart()
+    {
+        Resume();
+        Cursor.lockState = CursorLockMode.Locked;
+        gameManager.newScene = true;
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+
+        gameManager.playerHealth = 75;
     }
 }
