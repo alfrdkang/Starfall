@@ -1,10 +1,7 @@
+# Starfall
 > **Date Created: 30/06/24
 Date Modified: 30/06/24**
 > 
-
----
-
----
 
 # Instructions
 
@@ -85,8 +82,6 @@ The player’s goal is to **find rocket parts to fix their crashed ship, and esc
 ### NPCs/Plot
 
 - Addition of NPCs
-- More Dialogue
-- Thought out plot/storyline
 
 ### Particles/Visual Effects
 
